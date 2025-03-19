@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Display</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 350px;
+            border: 1px solid black;
+            padding: 10px;
+            margin: 50px auto;
+        }
+        h3 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .edit, .delete {
+            color: blue;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h3>DISPLAY</h3>
+    <table>
+        <tr>
+            <th>NAME</th>
+            <th>PROFIT</th>
+            <th></th>
+        </tr>
+        <tr>
+            <td>Samsung</td>
+            <td>5000</td>
+            <td>
+                <a href="#" class="edit">edit</a>
+                <a href="#" class="delete">delete</a>
+            </td>
+        </tr>
+        <tr>
+            <td>Nokia</td>
+            <td>1500</td>
+            <td>
+                <a href="#" class="edit">edit</a>
+                <a href="#" class="delete">delete</a>
+            </td>
+        </tr>
+        <tr>
+            <td>Xiaomi</td>
+            <td>3300</td>
+            <td>
+                <a href="#" class="edit">edit</a>
+                <a href="#" class="delete">delete</a>
+            </td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>

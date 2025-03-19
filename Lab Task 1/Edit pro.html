@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Product</title>
+    <style>
+        .container {
+            width: 300px;
+            border: 1px solid #000;
+            padding: 10px;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        .checkbox {
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h3>EDIT PRODUCT</h3>
+    <form>
+        <label for="name">Name</label><br>
+        <input type="text" id="name" name="name" value="HTC"><br>
+
+        <label for="buying_price">Buying Price</label><br>
+        <input type="number" id="buying_price" name="buying_price" value="34000"><br>
+
+        <label for="selling_price">Selling Price</label><br>
+        <input type="number" id="selling_price" name="selling_price" value="37000"><br>
+
+        <input type="checkbox" id="display" name="display" class="checkbox" checked>
+        <label for="display">Display</label><br><br>
+
+        <button type="submit">SAVE</button>
+    </form>
+</div>
+
+</body>
+</html>
