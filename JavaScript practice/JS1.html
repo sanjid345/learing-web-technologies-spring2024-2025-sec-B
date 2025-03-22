@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .error {
+            color: red;
+            font-size: 0.9rem;
+        }
+        .btn-group {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+        button {
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .login-btn {
+            background-color: #4caf50;
+            color: white;
+        }
+        .reset-btn {
+            background-color: #2196f3;
+            color: white;
+        }
+        button:hover {
+            opacity: 0.9;
+        }
+        .live-preview {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            color: #333;
+        }
+    </style>
+    <script>
+        function validateForm(event) {
+            event.preventDefault();  // Prevent page refresh
+
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            let emailError = document.getElementById("emailError");
+            let passwordError = document.getElementById("passwordError");
+            let preview = document.getElementById("livePreview");
+
+            emailError.textContent = "";
+            passwordError.textContent = "";
+
+            let isValid = true;
+
+            if (!email) {
+                emailError.textContent = "Email cannot be empty";
+                isValid = false;
+            }
+            if (!password) {
+                passwordError.textContent = "Password cannot be empty";
+                isValid = false;
+            }
+            if (email && password && email === password) {
+                passwordError.textContent = "Email and Password cannot be the same";
+                isValid = false;
+            }
+
+            if (isValid) {
+                alert("Login Successful");
+            }
+        }
+
+        function updatePreview(field) {
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            let preview = document.getElementById("livePreview");
+            
+            if (field === 'email' && email) {
+                preview.textContent = `Email: ${email}`;
+            } else if (field === 'password' && password) {
+                preview.textContent = `Password: ${password}`;
+            } else {
+                preview.textContent = "Login Page";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="live-preview" id="livePreview">Login Page</div>
+        <form onsubmit="validateForm(event)">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" oninput="updatePreview('email')">
+                <div class="error" id="emailError"></div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" oninput="updatePreview('password')">
+                <div class="error" id="passwordError"></div>
+            </div>
+            <div class="btn-group">
+                <button type="submit" class="login-btn">Login</button>
+                <button type="reset" class="reset-btn" onclick="updatePreview()">Reset</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
