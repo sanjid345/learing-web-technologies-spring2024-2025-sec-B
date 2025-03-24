@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Date of Birth Validation</title>
+    <script>
+        function validateDOB() {
+            var day = document.getElementById("day").value;
+            var month = document.getElementById("month").value;
+            var year = document.getElementById("year").value;
+            
+            if (day === "" || month === "" || year === "") {
+                alert("All fields must be filled");
+                return false;
+            }
+            
+            day = parseInt(day);
+            month = parseInt(month);
+            year = parseInt(year);
+            
+            if (isNaN(day) || isNaN(month) || isNaN(year)) {
+                alert("Please enter valid numbers");
+                return false;
+            }
+            
+            if (day < 1 || day > 31) {
+                alert("Day must be between 1 and 31");
+                return false;
+            }
+            
+            if (month < 1 || month > 12) {
+                alert("Month must be between 1 and 12");
+                return false;
+            }
+            
+            if (year < 1900 || year > 2016) {
+                alert("Year must be between 1900 and 2016");
+                return false;
+            }
+            
+            alert("Date of Birth is valid");
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <h4>Date of Birth</h4>
+    <form onsubmit="return validateDOB();">
+        <fieldset style="width: 400px; padding: 30px; border: 2px solid black;">
+            <legend>Enter DOB</legend>
+            <label>dd</label>
+            <input type="text" id="day" size="6" maxlength="2"> /
+            <label>mm</label>
+            <input type="text" id="month" size="6" maxlength="2"> /
+            <label>yyyy</label>
+            <input type="text" id="year" size="8" maxlength="4">
+            <br><br>
+            <input type="submit" value="Submit">
+        </fieldset>
+    </form>
+</body>
+</html>

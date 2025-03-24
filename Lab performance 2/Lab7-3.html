@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gender Selection Validation</title>
+    <script>
+        function validateGender() {
+            var genders = document.getElementsByName("gender");
+            var errorMessage = "";
+            var selected = false;
+            
+            for (var i = 0; i < genders.length; i++) {
+                if (genders[i].checked) {
+                    selected = true;
+                    break;
+                }
+            }
+
+            
+            if (!selected) {
+                errorMessage = "Please select a gender.";
+            }
+
+            document.getElementById("error").innerText = errorMessage;
+            return selected;
+        }
+    </script>
+</head>
+<body>
+    <h2>Gender Selection Validation</h2>
+    <form onsubmit="return validateGender();">
+        <fieldset>
+            <legend>Gender</legend>
+            <input type="radio" id="male" name="gender" value="Male">
+            <label for="male">Male</label>
+            <input type="radio" id="female" name="gender" value="Female">
+            <label for="female">Female</label>
+            <input type="radio" id="other" name="gender" value="Other">
+            <label for="other">Other</label>
+        </fieldset>
+        <button type="submit">Submit</button>
+        <p id="error" style="color: red;"></p>
+    </form>
+</body>
+</html>

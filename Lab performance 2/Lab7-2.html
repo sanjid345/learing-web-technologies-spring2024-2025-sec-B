@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Email Validation</title>
+    <script>
+        function validateEmail() {
+            var email = document.getElementById("email").value.trim();
+            var errorMessage = "";
+            
+            
+            if (email === "") {
+                errorMessage = "Email cannot be empty.";
+            } else {
+                
+                if (!email.includes("@") || !email.includes(".")) {
+                    errorMessage = "Email must contain '@' and '.' to be valid.";
+                } else {
+                    var atIndex = email.indexOf("@");
+                    var dotIndex = email.lastIndexOf(".");
+                    
+                    
+                    if (atIndex < 1 || dotIndex < atIndex + 2 || dotIndex >= email.length - 1) {
+                        errorMessage = "Invalid email format. Example: anything@example.com";
+                    }
+                }
+            }
+
+            document.getElementById("error").innerText = errorMessage;
+            return errorMessage === "";
+        }
+    </script>
+</head>
+<body>
+    <h2>Email Validation</h2>
+    <form onsubmit="return validateEmail();">
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email">
+        <button type="submit">Submit</button>
+        <p id="error" style="color: red;"></p>
+    </form>
+</body>
+</html>

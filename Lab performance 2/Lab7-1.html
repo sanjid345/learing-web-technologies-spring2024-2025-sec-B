@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Name Validation</title>
+    <script>
+        function validateName() {
+            var name = document.getElementById("name").value.trim();
+            var errorMessage = "";
+
+            // Rule i: Cannot be empty
+            if (name === "") {
+                errorMessage = "Name cannot be empty.";
+            } else {
+                var words = name.split(" ").filter(word => word.length > 0);
+
+                // Rule ii: Contains at least two words
+                if (words.length < 2) {
+                    errorMessage = "Name must contain at least two words.";
+                } 
+                // Rule iv: Must start with a letter
+                else if (!((name[0] >= 'a' && name[0] <= 'z') || (name[0] >= 'A' && name[0] <= 'Z'))) {
+                    errorMessage = "Name must start with a letter.";
+                } 
+                // Rule iii: Can contain a-z, A-Z, dot(.) or dash(-)
+                else {
+                    for (var i = 0; i < name.length; i++) {
+                        var char = name[i];
+                        if (!((char >= 'a' && char <= 'z') || (char >= 'A' && char <= 'Z') || char === ' ' || char === '.' || char === '-')) {
+                            errorMessage = "Name can only contain letters, dots (.), and dashes (-).";
+                            break;
+                        }
+                    }
+                }
+            }
+
+            document.getElementById("error").innerText = errorMessage;
+            return errorMessage === "";
+        }
+    </script>
+</head>
+<body>
+    <h2>Name Validation</h2>
+    <form onsubmit="return validateName();">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
+        <button type="submit">Submit</button>
+        <p id="error" style="color: red;"></p>
+    </form>
+</body>
+</html>
