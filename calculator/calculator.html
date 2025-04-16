@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JS Calculator</title>
+</head>
+<body>
+<script>
+  const calculator = document.createElement('div');
+  Object.assign(calculator.style, {
+    width: '280px',
+    margin: '100px auto',
+    padding: '20px',
+    border: '2px solid #000',
+    borderRadius: '12px',
+    background: '#e0e0e0',
+    boxShadow: '0 4px 10px rgba(0,0,0,0.2)',
+    fontFamily: 'Arial, sans-serif',
+  });
+
+  // Create display
+  const display = document.createElement('input');
+  Object.assign(display.style, {
+    width: '95%',
+    height: '50px',
+    fontSize: '24px',
+    marginBottom: '15px',
+    textAlign: 'right',
+    padding: '5px 10px',
+    borderRadius: '8px',
+    border: '1px solid #888'
+  });
+  display.readOnly = true;
+  calculator.appendChild(display);
+
+  // Buttons layout
+  const buttons = [
+    '7', '8', '9', '/',
+    '4', '5', '6', '*',
+    '1', '2', '3', '-',
+    '0', '.', '%', '+',
+    'C', '='
+  ];
+
+  // Button grid container
+  const grid = document.createElement('div');
+  Object.assign(grid.style, {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(4, 1fr)',
+    gap: '10px'
+  });
+
+  // Calculator logic
+  let currentInput = '';
+  let resultDisplayed = false;
+
+  function handleClick(val) {
+    if (val === 'C') {
+      currentInput = '';
+      display.value = '';
+      return;
+    }
+
+    if (val === '=') {
+      try {
+        currentInput = currentInput.replace(/%/g, '/100');
+        const result = eval(currentInput);
+        display.value = result;
+        currentInput = result.toString();
+        resultDisplayed = true;
+      } catch {
+        display.value = 'Error';
+        currentInput = '';
+      }
+      return;
+    }
+
+    if (resultDisplayed && !isNaN(val)) {
+      currentInput = val;
+      resultDisplayed = false;
+    } else {
+      currentInput += val;
+    }
+
+    display.value = currentInput;
+  }
+
+  // Create buttons dynamically
+  buttons.forEach(btnText => {
+    const button = document.createElement('button');
+    button.textContent = btnText;
+    Object.assign(button.style, {
+      padding: '15px',
+      fontSize: '18px',
+      borderRadius: '6px',
+      border: '1px solid #444',
+      cursor: 'pointer',
+      backgroundColor: '#fff',
+      transition: 'background 0.2s'
+    });
+
+    button.onmouseover = () => button.style.backgroundColor = '#ddd';
+    button.onmouseout = () => button.style.backgroundColor = '#fff';
+
+    button.addEventListener('click', () => handleClick(btnText));
+    grid.appendChild(button);
+  });
+
+  calculator.appendChild(grid);
+  document.body.appendChild(calculator);
+</script>
+<script src="cal vali js.html"></script>
+</body>
+</html>
