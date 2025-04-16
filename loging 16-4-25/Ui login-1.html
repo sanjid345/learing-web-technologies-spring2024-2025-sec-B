@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .checkbox-group {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        .btn-group {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+        button {
+            flex: 1;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .login-btn {
+            background-color: #4caf50;
+            color: white;
+        }
+        .reset-btn {
+            background-color: #2196f3;
+            color: white;
+        }
+        .forgot-password {
+            color: #2196f3;
+            text-decoration: none;
+        }
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+        button:hover {
+            opacity: 0.9;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.querySelector('form');
+            const resetBtn = document.querySelector('.reset-btn');
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                // Add form validation/auth logic here
+                window.location.href = 'homepage.html';
+            });
+
+            resetBtn.addEventListener('click', () => {
+                form.reset();
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Login Page</h2>
+        <form>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="checkbox-group">
+                <label><input type="checkbox" name="remember"> Remember me</label>
+                <a href="#" class="forgot-password">Forgot Password?</a>
+            </div>
+            <div class="btn-group">
+                <button type="submit" class="login-btn">Login</button>
+                <button type="button" class="reset-btn">Reset</button>
+            </div>
+        </form>
+    </div>
+    <script src="Ui loging vali-1.html"></script>
+</body>
+</html>
